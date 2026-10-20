@@ -17,3 +17,20 @@ def preprocess_function(examples):
     model_inputs["labels"] = labels["input_ids"]
 
     return model_inputs
+
+tokenized_datasets_validation = dataset['validation'].map(
+    preprocess_function,
+    batched=True,
+    remove_columns=dataset["validation"].column_names,
+    batch_size=2
+)
+
+tokenized_datasets_test = dataset['test'].map(
+    preprocess_function,
+    batched=True,
+    remove_columns=dataset["test"].column_names,
+    batch_size=2)
+
+from transformers import DataCollatorForSeq2Seq
+
+data_collator = DataCollatorForSeq2Seq(tokenizer, model=model)
