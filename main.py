@@ -36,10 +36,10 @@ def run():
     trainer = Seq2SeqTrainer(
         model=model,
         args=training_args,
-        train_dataset=validation_dataset,
-        eval_dataset=test_dataset,
+        train_dataset=test_dataset,
+        eval_dataset=validation_dataset,
         data_collator=data_collator,
-        compute_metrics=build_compute_metrics(),
+        compute_metrics=build_compute_metrics(tokenizer),
     )
 
     trainer.train()

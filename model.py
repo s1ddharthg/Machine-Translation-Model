@@ -10,13 +10,12 @@ def freeze_layer(model, num_layers: int):
     for parameter in model.parameters():
         parameter.requires_grad = True
 
-    num_layers_to_freeze = TrainConfig.num_layers_to_freeze  
+    num_layers_to_freeze = TrainConfig.layers_to_freeze  
     for layer_index, layer in enumerate(model.model.encoder.layers):
         if layer_index < len(model.model.encoder.layers) - num_layers_to_freeze:
             for parameter in layer.parameters():
                 parameter.requires_grad = False
 
-    num_layers_to_freeze = 10  
     for layer_index, layer in enumerate(model.model.decoder.layers):
         if layer_index < len(model.model.encoder.layers) - num_layers_to_freeze:
             for parameter in layer.parameters():
