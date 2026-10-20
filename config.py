@@ -1,7 +1,5 @@
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
-
 MAX_LENGTH=256
 
 
@@ -9,7 +7,7 @@ MAX_LENGTH=256
 class TrainConfig:
     model_name: str = "Helsinki-NLP/opus-mt-en-hi"
     dataset_name: str = "cfilt/iitb-english-hindi"
-    output_dir: str = "./finetuned-nlp-en-hi"
+    output_dir: Path = Path("./finetuned-nlp-en-hi")
     max_length: int = 256
     max_target_length: int = 256
     train_batch_size: int = 8

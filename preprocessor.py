@@ -1,6 +1,6 @@
 from config import TrainConfig
 
-def preprocess_function(examples):
+def preprocess_function(examples, tokenizer):
     inputs = [ex["en"] for ex in examples["translation"]]
     targets = [ex["hi"] for ex in examples["translation"]]
 
@@ -10,18 +10,21 @@ def preprocess_function(examples):
 
     return model_inputs
 
-def tokenize_datasets(dataset):
+def tokenize_datasets(dataset, tokenizer):
     tokenized_datasets_validation = dataset['validation'].map(
         preprocess_function,
         batched=True,
         remove_columns=dataset["validation"].column_names,
-        batch_size=2
+        batch_size=2,
+        fn_kwargs={"tokenizer": tokenizer},
     )
 
     tokenized_datasets_test = dataset['test'].map(
         preprocess_function,
         batched=True,
         remove_columns=dataset["test"].column_names,
-        batch_size=2)
+        batch_size=2,
+        fn_kwargs={"tokenizer": tokenizer},
+    )
 
     return tokenized_datasets_validation, tokenized_datasets_test

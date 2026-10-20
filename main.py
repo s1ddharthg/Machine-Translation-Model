@@ -12,7 +12,7 @@ def run():
     model, tokenizer = load_model_and_tokenizer(TrainConfig.model_name)
     freeze_layer(model, TrainConfig.num_layers_to_freeze)
 
-    validation_dataset, test_dataset = tokenize_datasets(raw_dataset)
+    validation_dataset, test_dataset = tokenize_datasets(raw_dataset, tokenizer)
     data_collator = DataCollatorForSeq2Seq(tokenizer, model=model)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
