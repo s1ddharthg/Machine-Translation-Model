@@ -9,7 +9,6 @@ class TrainConfig:
     dataset_name: str = "cfilt/iitb-english-hindi"
     output_dir: Path = Path("./finetuned-nlp-en-hi")
     max_length: int = 256
-    max_target_length: int = 256
     train_batch_size: int = 8
     eval_batch_size: int = 8
     learning_rate: float = 1e-5
@@ -20,7 +19,9 @@ class TrainConfig:
     save_steps: int = 250
     logging_steps: int = 25
     layers_to_freeze: int = 10
-    gradient_checkpointing: bool = False
-    fp16: bool = False
-    seed: int = 42
-    generation_max_length: int = 256
+
+    #Revison control
+    model_revision: str = "main"
+    dataset_revision: str | None = None
+    resume_from_checkpoint: str | None = None
+    save_total_limit: int = 3

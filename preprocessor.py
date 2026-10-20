@@ -1,4 +1,21 @@
 from config import TrainConfig
+from datasets import load_dataset
+
+def load_translation_dataset(dataset_name: str, revision: str | None = None,):
+    kwargs = {}
+
+    if revision is not None:
+        kwargs["revision"] = revision
+
+    dataset = load_dataset(dataset_name, **kwargs)
+
+    required_splits = {"train", "validation", "test"}
+    missing = required_splits - set(dataset.keys())
+
+    if missing:
+        raise ValueError(f"Missing dataset splits: {sorted(missing)}")
+
+    return dataset
 
 def preprocess_function(examples, tokenizer):
     inputs = [ex["en"] for ex in examples["translation"]]
