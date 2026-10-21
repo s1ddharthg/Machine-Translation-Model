@@ -2,8 +2,8 @@ from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 from config import TrainConfig
 
 def load_model_and_tokenizer(model_name: str):
-    tokenizer = AutoTokenizer.from_pretrained(model_name, revision=revision)
-    model = AutoModelForSeq2SeqLM.from_pretrained(model_name, revision=revision)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, revision=TrainConfig.model_revision)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_name, revision=TrainConfig.model_revision)
     return model, tokenizer
 
 def freeze_layer(model, num_layers_to_freeze: int):
