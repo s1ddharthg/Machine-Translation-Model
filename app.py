@@ -1,6 +1,6 @@
 from pathlib import path
 import torch
-from flfask import Flask, request, jsonify
+from flask import Flask, request, jsonify
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from config import ModelConfig
 
