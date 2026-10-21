@@ -25,3 +25,7 @@ class TrainConfig:
     dataset_revision: str | None = None
     resume_from_checkpoint: str | None = None
     save_total_limit: int = 3
+
+class ModelConfig:
+    model_name: str = "Helsinki-NLP/opus-mt-en-hi"
+    model_dir: str = "finetuned-nlp-en-hi/best_model"
