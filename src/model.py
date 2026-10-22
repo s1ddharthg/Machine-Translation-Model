@@ -1,5 +1,5 @@
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
-from config import TrainConfig
+from src.config import TrainConfig
 
 def load_model_and_tokenizer(model_name: str):
     tokenizer = AutoTokenizer.from_pretrained(model_name, revision=TrainConfig.model_revision)

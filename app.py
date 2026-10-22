@@ -1,12 +1,12 @@
-from pathlib import path
+from pathlib import Path
 import torch
 from flask import Flask, request, jsonify
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
-from config import ModelConfig
+from src.config import ModelConfig
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-if not path.exists(ModelConfig.model_dir):
+if not Path.exists(ModelConfig.model_dir):
     raise FileNotFoundError(f"Model directory does not exist: {ModelConfig.model_dir}")
 
 tokenizer = AutoTokenizer.from_pretrained(ModelConfig.model_dir)

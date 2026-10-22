@@ -28,4 +28,4 @@ class TrainConfig:
 
 class ModelConfig:
     model_name: str = "Helsinki-NLP/opus-mt-en-hi"
-    model_dir: str = "finetuned-nlp-en-hi/best_model"
+    model_dir: Path = Path("finetuned-nlp-en-hi/best_model")

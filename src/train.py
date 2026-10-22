@@ -1,11 +1,11 @@
 from pathlib import Path
 from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, DataCollatorForSeq2Seq, Seq2SeqTrainingArguments, Seq2SeqTrainer
-from model import load_model_and_tokenizer, freeze_layer
-from metrics import build_compute_metrics
-from preprocessor import preprocess_function, tokenize_datasets
+from src.model import load_model_and_tokenizer, freeze_layer
+from src.metrics import build_compute_metrics
+from src.preprocessor import preprocess_function, tokenize_datasets
 import torch
-from config import TrainConfig
+from src.config import TrainConfig
 from transformers.trainer_utils import get_last_checkpoint
 
 def resolve_checkpoint(output_dir: str,resume_from_checkpoint: str | None,):

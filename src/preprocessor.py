@@ -1,4 +1,4 @@
-from config import TrainConfig
+from src.config import TrainConfig
 from datasets import load_dataset
 
 def load_translation_dataset(dataset_name: str, revision: str | None = None,):
