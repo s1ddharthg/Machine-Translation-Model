@@ -219,8 +219,5 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-finetuned-nlp-en-hi/checkpoint-500/
-finetuned-nlp-en-hi/checkpoint-1000/
-finetuned-nlp-en-hi/checkpoint-1500/
-finetuned-nlp-en-hi/checkpoint-2000/
+finetuned-nlp-en-hi/
 .vscode/
